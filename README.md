@@ -26,7 +26,19 @@ const state = await Maybe(localStorage.getItem('userInfo')).match({ // null, und
   })
   None: () => Err(Error('Stored user info was not found'))
 });
+```
 
+Back in React (or your favorite framework)
+
+```jsx
+{state.is(Loading) ?
+  <Loading msg={state.val} /> :
+state.is(Err) ?
+  <Error msg={state.val.message} /> :
+state.is(Ok) ?
+  <View user={state.val} /> :
+  <Error msg='Something went wrong' />
+}
 ```
 
 ## Why
