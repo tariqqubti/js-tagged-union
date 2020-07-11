@@ -11,8 +11,11 @@ Inspired from:
 
 import {Maybe, Run, Check, Http, Loading, Ok, Err} from '...';
 
+// If you are using React
+const [state, setState] = Loading('Initial');
+
 // Each arm could be abstracted into its own function
-const state = await Maybe(localStorage.getItem('userInfo')).match({ // null, undefined check
+const _state = await Maybe(localStorage.getItem('userInfo')).match({ // null, undefined check
   Some: info => Run(() => JSON.parse(info)).match({ // parse json
     Ok: info => Check(info.id, x => /valid/.test(x)).match({ // run validation
       Pass: async id => (await Http(fetch(`/user/${id}`))).match({ // fetch
@@ -26,6 +29,9 @@ const state = await Maybe(localStorage.getItem('userInfo')).match({ // null, und
   })
   None: () => Err(Error('Stored user info was not found'))
 });
+
+// If you are using React
+setState(_state);
 ```
 
 Back in React (or your favorite framework)
