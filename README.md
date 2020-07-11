@@ -5,7 +5,7 @@ Tagged Union implementation and some helper functions in JavaScript.
 Inspired from:
 
 * [union-js](https://github.com/quadrupleslap/union-js)
-* Inspired from [pattern matching](https://doc.rust-lang.org/book/ch18-03-pattern-syntax.html) in Rust.
+* [pattern matching](https://doc.rust-lang.org/book/ch18-03-pattern-syntax.html) in Rust.
 
 ```js
 // UserService.js
