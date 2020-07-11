@@ -34,12 +34,8 @@ export async function loadUser() {
 Back in React (or your favorite framework)
 
 ```jsx
-import React from 'react';
-import {Loading} from '...';
-import {loadUser} from './UserService';
+  // --snip--
 
-function App() {
-  const [state, setState] = useState(Loading('Initial'));
   setState(async () => await loadUser());
 
   return <>
@@ -52,6 +48,8 @@ function App() {
     <Error msg='Something went wrong' />
   }
   </>
+
+  // --snip--
 }
 ```
 
