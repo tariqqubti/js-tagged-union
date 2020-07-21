@@ -8,14 +8,14 @@ export const Check = (x, predicate) =>
 
 export const CheckForm = (form, predicates) => {
   const validations = [];
-  const validatedForm = {};
+  const validated = {};
   for(const key in predicates)
     if(predicates.hasOwnProperty(key)) {
       validations.push(predicates[key](form[key]));
-      validatedForm[key] = form[key];
+      validated[key] = form[key];
     }
   if(validations.every(v => v === true))
-    return Pass(validatedForm);
+    return Pass({validated, validations});
   else
-    return Fail(validatedForm);
+    return Fail({validated, validations});
 };

@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "build:web": "rollup src/index.js --file lib/bundle.web.js --format iife --name jsTaggedUnion",
-    "build:node": "rollup src/index.js --file lib/bundle.node.js --format cjs"
+    "build:node": "rollup src/index.js --file lib/bundle.node.js --format cjs",
+    "build": "npm run build:web & npm run build:node"
   },
   "repository": {
     "type": "git",
