@@ -4,8 +4,8 @@
   "description": "Tagged Union implementation and some helper functions in JavaScript.",
   "main": "webpack.config.js",
   "scripts": {
-    "build:web": "rollup src/index.js --file lib/bundle.web.js --format iife --name jsTaggedUnion",
-    "build:node": "rollup src/index.js --file lib/bundle.node.js --format cjs",
+    "build:web": "rollup src/index.js --file lib/js-tagged-union.web.js --format iife --name jsTaggedUnion",
+    "build:node": "rollup src/index.js --file lib/js-tagged-union.node.js --format cjs",
     "build": "npm run build:web & npm run build:node"
   },
   "repository": {
