@@ -1,5 +1,5 @@
 import {assertEquals} from 'https://deno.land/std/testing/asserts.ts';
-import {Maybe, Check, Run, Future, Ok} from '../src/index.js';
+import {Maybe, Check, Run, Future, Ok, CheckForm, Pass, Fail} from '../src/index.js';
 const equals42 = x => x === 42;
 
 Deno.test('Maybe', () => {
@@ -12,8 +12,21 @@ Deno.test('Maybe', () => {
 Deno.test('Valid', () => {
   const valid = Check(42, equals42);
   assertEquals(valid.match({Pass: x => x}), 42);
+
   const invalid = Check(41, equals42);
   assertEquals(invalid.match({Fail: x => x}), 41);
+
+  const validForm = CheckForm(
+    {id: 42, name: 'zaphod'},
+    {id: x => x === 42, name: x => x === 'zaphod'},
+  );
+  assertEquals(validForm.is(Pass), true);
+
+  const inValidForm = CheckForm(
+    {id: 42, name: 'zaphod'},
+    {id: x => x === 40, name: x => x === 'zaphod'},
+  );
+  assertEquals(inValidForm.is(Fail), true);
 });
 
 Deno.test('Task', () => {
