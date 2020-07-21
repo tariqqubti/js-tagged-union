@@ -1,0 +1,22 @@
+{
+  "name": "js-tagged-union",
+  "version": "1.0.0",
+  "description": "Tagged Union implementation and some helper functions in JavaScript.",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build:web": "rollup src/index.js --file lib/bundle.web.js --format iife --name jsTaggedUnion",
+    "build:node": "rollup src/index.js --file lib/bundle.node.js --format cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tariqqubti/js-tagged-union.git"
+  },
+  "keywords": ["tagged unions", "pattern matching"],
+  "author": "Tariq Qubti <tariq.qubti@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tariqqubti/js-tagged-union/issues"
+  },
+  "homepage": "https://github.com/tariqqubti/js-tagged-union#readme",
+  "devDependencies": {}
+}
