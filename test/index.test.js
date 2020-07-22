@@ -23,16 +23,16 @@ Deno.test('Valid', () => {
   const invalid = Check(41, equals42);
   assertEquals(invalid.match({Fail: x => x}), 41);
 
-  const validForm = CheckForm(
-    {id: 42, name: 'zaphod'},
-    {id: x => x === 42, name: x => x === 'zaphod'},
-  );
+  const validForm = CheckForm([
+    [42, x => x === 42],
+    ['zaphod', x => x === 'zaphod'],
+  ]);
   assertEquals(validForm.is(Pass), true);
 
-  const inValidForm = CheckForm(
-    {id: 42, name: 'zaphod'},
-    {id: x => x === 40, name: x => x === 'zaphod'},
-  );
+  const inValidForm = CheckForm([
+    [42, x => x === 40],
+    ['zaphod', x => x === 'zaphod'],
+  ]);
   assertEquals(inValidForm.is(Fail), true);
 });
 
