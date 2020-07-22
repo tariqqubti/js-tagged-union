@@ -1,6 +1,13 @@
 import {assertEquals} from 'https://deno.land/std/testing/asserts.ts';
-import {Maybe, Check, Run, Future, Ok, CheckForm, Pass, Fail} from '../src/index.js';
+import {Maybe, Check, Run, Future, Ok, Err, CheckForm, Pass, Fail} from '../src/index.js';
 const equals42 = x => x === 42;
+
+Deno.test('Tag', () => {
+  assertEquals(Ok(42).is(Ok), true);
+  assertEquals(Ok(42).match({Ok: true}).is(Ok), true);
+  assertEquals(Err(42).match({Ok: true, Err: true}).is(Ok), false);
+  assertEquals(Ok(42).match({Ok}).is(Ok), true);
+});
 
 Deno.test('Maybe', () => {
   const none = Maybe(null);

@@ -13,8 +13,11 @@ export class Instance {
     return this.kind === x.kind;
   }
   match(arms) {
-    if(arms[this.kind])
-      return arms[this.kind](this.val);
+    const arm = arms[this.kind];
+    if(arm === true)
+      return this;
+    if(typeof arm === 'function')
+      return arm(this.val);
     if(arms._)
       return arms._(this.val);
     throw new Error(`Case not matched: ${this}`);
