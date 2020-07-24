@@ -17,6 +17,7 @@ export const CheckForm = (form, validators) => {
   const passedKeys = Object.keys(passed);
   if(passedKeys.length === keys.length)
     return Pass(passed);
-  else
-    return Fail(passed);
+
+  const failedKeys = keys.filter(k => !passedKeys.includes(k));
+  return Fail(failedKeys);
 };

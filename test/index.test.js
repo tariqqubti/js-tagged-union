@@ -34,6 +34,7 @@ Deno.test('Valid', () => {
     {id: x => x === 40, name: x => x === 'zaphod'},
   );
   assertEquals(inValidForm.is(Fail), true);
+  assertEquals(inValidForm.match({Fail: keys => keys.join(', ')}), 'id');
 });
 
 Deno.test('Task', () => {
